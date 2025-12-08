@@ -1,5 +1,5 @@
 const fs = require('fs');
-fs.readFile("output.txt", 'Danish you can do it by the help of Allah', (err) => {
+fs.readFile("output.txt", 'utf8', (err, data) => {
   if (err) throw err;
-  console.log('File Written Successfully.');
+  console.log(data);
 })
