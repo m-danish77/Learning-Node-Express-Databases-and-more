@@ -1,8 +1,13 @@
-const h1 = document.querySelector('h1');
-const greeting = (name) => h1.innerHTML = `Hello ${name}`
-const processUserInput = (callback) => {
-  const name = prompt('Please enter your name.');
-  greeting(name);
-}
+let student = {
+  rollNumber: 1,
+  studentName: 'Muhammad Munib Danish',
+  CGPA: 3.45
+};
 
-processUserInput(greeting);
+let student2 = JSON.parse(JSON.stringify(student));
+
+// console.log(student2);
+// delete student.rollNumber;
+// console.log(student2);
+
+console.log(student === student2);
