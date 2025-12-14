@@ -25,8 +25,8 @@ const sumRequestHandler = (req, res) => {
     <h1>The Sum is ${sum}</h1>
   </body>
 </html>
-        `);
-    res.end();
+  `);
+    return res.end();
   });
 };
 
