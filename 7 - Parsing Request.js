@@ -1,5 +1,6 @@
+const http = require("http");
 const fs = require("fs");
-const userRequestHandler = (req, res) => {
+const server = http.createServer((req, res) => {
   console.log(req.url, req.method);
 
   res.setHeader("Content-type", "text/html");
@@ -75,12 +76,8 @@ const userRequestHandler = (req, res) => {
   res.write("<body><h1>Error 404 Not Found</h1></body>");
   res.write("</html>");
   res.end();
-};
+});
 
-// for understand Common JS module syntax
-const helloWorld = "Hello World!";
-
-module.exports = {
-  userRequestHandler,
-  helloWorld,
-};
+server.listen(3000, () => {
+  console.log(`Server is running at http://localhost:3000`);
+});
