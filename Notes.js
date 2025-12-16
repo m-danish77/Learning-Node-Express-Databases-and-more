@@ -42,3 +42,9 @@ process.on("exit", (code) => {
   console.log("6. Exit event");
 });
 console.log("7. End of script");
+
+// .gitignore syntax is very important the comment takes seprate line you can write the code and commit in same line it will not work
+// node_modules/         # this will not work
+// comment and the code should be in seprate lines
+// # this will work
+// node_modules/
