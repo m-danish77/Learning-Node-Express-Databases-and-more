@@ -1,8 +1,8 @@
-const http = require("http");
-const fs = require("fs");
+const http = require('http');
+const fs = require('fs');
 const server = http.createServer((req, res) => {
-  res.setHeader("Content-type", "text/html");
-  if (req.url === "/home" || req.url === "/") {
+  res.setHeader('Content-type', 'text/html');
+  if (req.url === '/home' || req.url === '/') {
     res.write(`
       <!DOCTYPE html>
         <html lang="en">
@@ -36,14 +36,14 @@ const server = http.createServer((req, res) => {
       `);
     return res.end();
   } else if (
-    req.url.toLowerCase() === "/submit-details" &&
-    req.method == "POST"
+    req.url.toLowerCase() === '/submit-details' &&
+    req.method == 'POST'
   ) {
     const body = [];
-    req.on("data", (chunk) => {
+    req.on('data', (chunk) => {
       body.push(chunk);
     });
-    req.on("end", () => {
+    req.on('end', () => {
       const fullBody = Buffer.concat(body).toString();
       const params = new URLSearchParams(fullBody);
       const bodyObject = Object.fromEntries(params);
@@ -53,13 +53,13 @@ const server = http.createServer((req, res) => {
       // fs.writeFileSync("output.txt", JSON.stringify(bodyObject));
 
       // this below code is recomending as it is asynchronous and dont block the event loop (single main thread execution)
-      fs.writeFile("output.txt", JSON.stringify(bodyObject), (err) => {
+      fs.writeFile('output.txt', JSON.stringify(bodyObject), (err) => {
         console.log(
-          "Callback is required for async functions. this code will run no matter what"
+          'Callback is required for async functions. this code will run no matter what'
         );
       });
       res.statusCode = 302;
-      res.setHeader("Location", "/");
+      res.setHeader('Location', '/');
       res.end();
     });
 
@@ -74,11 +74,11 @@ const server = http.createServer((req, res) => {
 
     return;
   }
-  res.setHeader("Content-Type", "text/html");
-  res.write("<html>");
-  res.write("<head><title>Complete Coding</title></head>");
-  res.write("<body><h1>Error 404 Not Found</h1></body>");
-  res.write("</html>");
+  res.setHeader('Content-Type', 'text/html');
+  res.write('<html>');
+  res.write('<head><title>Complete Coding</title></head>');
+  res.write('<body><h1>Error 404 Not Found</h1></body>');
+  res.write('</html>');
   res.end();
 });
 

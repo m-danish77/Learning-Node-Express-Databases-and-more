@@ -1,10 +1,10 @@
 const sumRequestHandler = (req, res) => {
   const body = [];
-  req.on("data", (chunk) => {
+  req.on('data', (chunk) => {
     body.push(chunk);
   });
 
-  req.on("end", () => {
+  req.on('end', () => {
     const fullBody = Buffer.concat(body).toString();
     const params = new URLSearchParams(fullBody);
     const objectBody = Object.fromEntries(params);

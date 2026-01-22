@@ -1,8 +1,8 @@
-const { sumRequestHandler } = require("./sumRequestHandler");
+const { sumRequestHandler } = require('./sumRequestHandler');
 const userRequestHandler = (req, res) => {
-  res.setHeader("Content-Type", "text/html");
+  res.setHeader('Content-Type', 'text/html');
 
-  if (req.url.toLowerCase() === "/") {
+  if (req.url.toLowerCase() === '/') {
     res.write(`
 <!DOCTYPE html>
 <html lang="en">
@@ -18,7 +18,7 @@ const userRequestHandler = (req, res) => {
 </html>
       `);
     return res.end();
-  } else if (req.url.toLowerCase() === "/calculator") {
+  } else if (req.url.toLowerCase() === '/calculator') {
     res.write(`
 <!DOCTYPE html>
 <html lang="en">
@@ -43,7 +43,7 @@ const userRequestHandler = (req, res) => {
 </html>
       `);
     return res.end();
-  } else if (req.url.toLowerCase() === "/calculate-result") {
+  } else if (req.url.toLowerCase() === '/calculate-result') {
     return sumRequestHandler(req, res);
   }
 

@@ -11,8 +11,7 @@ const server = http.createServer((req, res) => {
       <meta charset="UTF-8">
       <meta name="viewport" content="width=device-width, initial-scale=1.0">
       <title>Practice</title>
-    </head>`
-  );
+    </head>`);
 
   if (req.url === '/home') {
     res.write(`
@@ -21,35 +20,28 @@ const server = http.createServer((req, res) => {
     </body>
     </html>`);
     return res.end();
-
   } else if (req.url === '/products') {
     res.write(`
     <body>
         <center><h1>Products are below</h1></center>
     </body>
-    </html>`
-    );
+    </html>`);
     res.end();
-
   } else {
     res.write(`
     <body>
         <center><h1>Hello World</h1></center>
     </body>
 
-    </html>`
-    );
+    </html>`);
     res.end();
   }
 });
-
 
 const PORT = 3000;
 server.listen(PORT, () => {
   console.log(`Server running on address http://localhost:${PORT}`);
 });
-
-
 
 // Improved version suggested by deepseek
 

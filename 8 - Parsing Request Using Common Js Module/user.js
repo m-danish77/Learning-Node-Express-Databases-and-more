@@ -1,9 +1,9 @@
-const fs = require("fs");
+const fs = require('fs');
 const userRequestHandler = (req, res) => {
   console.log(req.url, req.method);
 
-  res.setHeader("Content-type", "text/html");
-  if (req.url === "/home" || req.url === "/") {
+  res.setHeader('Content-type', 'text/html');
+  if (req.url === '/home' || req.url === '/') {
     res.write(`
       <!DOCTYPE html>
         <html lang="en">
@@ -37,15 +37,15 @@ const userRequestHandler = (req, res) => {
       `);
     return res.end();
   } else if (
-    req.url.toLowerCase() === "/submit-details" &&
-    req.method == "POST"
+    req.url.toLowerCase() === '/submit-details' &&
+    req.method == 'POST'
   ) {
     const body = [];
-    req.on("data", (chunk) => {
+    req.on('data', (chunk) => {
       console.log(chunk);
       body.push(chunk);
     });
-    req.on("end", () => {
+    req.on('end', () => {
       // just like Array.prototype.concat used for arrays Buffer.concat used for concatination of binary data
       const fullBody = Buffer.concat(body).toString();
       console.log(fullBody);
@@ -62,23 +62,23 @@ const userRequestHandler = (req, res) => {
       // Converts the URLSearchParams object (which is a list of key-value pairs like [["name", "John"], ["gender", "male"]]) into a regular JavaScript object {name: "John", gender: "male"} - much easier to work with!
 
       console.log(bodyObject);
-      fs.writeFileSync("output.txt", JSON.stringify(bodyObject));
+      fs.writeFileSync('output.txt', JSON.stringify(bodyObject));
     });
 
     res.statusCode = 302;
-    res.setHeader("Location", "/"); // this set the url to default http://localhost:3000
+    res.setHeader('Location', '/'); // this set the url to default http://localhost:3000
     return res.end();
   }
-  res.setHeader("Content-Type", "text/html");
-  res.write("<html>");
-  res.write("<head><title>Complete Coding</title></head>");
-  res.write("<body><h1>Error 404 Not Found</h1></body>");
-  res.write("</html>");
+  res.setHeader('Content-Type', 'text/html');
+  res.write('<html>');
+  res.write('<head><title>Complete Coding</title></head>');
+  res.write('<body><h1>Error 404 Not Found</h1></body>');
+  res.write('</html>');
   res.end();
 };
 
 // for understand Common JS module syntax
-const helloWorld = "Hello World!";
+const helloWorld = 'Hello World!';
 
 module.exports = {
   userRequestHandler,

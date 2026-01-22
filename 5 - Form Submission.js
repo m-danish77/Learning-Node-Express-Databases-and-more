@@ -37,7 +37,10 @@ const server = http.createServer((req, res) => {
         </html>
       `);
     return res.end();
-  } else if (req.url.toLowerCase() === '/submit-details' && req.method == 'POST') {
+  } else if (
+    req.url.toLowerCase() === '/submit-details' &&
+    req.method == 'POST'
+  ) {
     res.statusCode = 302;
     res.setHeader('Location', '/'); // this set the url to default http://localhost:3000
     return res.end();
