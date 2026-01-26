@@ -13,7 +13,13 @@ hostRouter.get("/add-home", (req, res, next) => {
 const registeredHomes = [];
 hostRouter.post("/add-home", (req, res, next) => {
   console.log("Registered Homes Are: ");
-  registeredHomes.push({ houseName: req.body["house-name"] });
+  registeredHomes.push({
+    houseName: req.body["house-name"],
+    pricePerNight: req.body["price-per-night"],
+    location: req.body.location,
+    rating: req.body.rating,
+    pictureUrl: req.body["picture-url"],
+  });
   res.render("home-added", { pageTitle: "Home Added" });
 });
 

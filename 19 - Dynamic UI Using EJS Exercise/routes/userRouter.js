@@ -6,7 +6,7 @@ const userRouter = express.Router();
 
 // local module
 // const rootDir = require("../utils/pathUtil");
-const { registeredHomes } = require("../routes/hostRouter");
+const { registeredHomes } = require("./hostRouter");
 
 userRouter.get("/", (req, res, next) => {
   console.log(registeredHomes);
