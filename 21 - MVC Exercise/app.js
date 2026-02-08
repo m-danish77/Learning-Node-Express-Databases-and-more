@@ -45,14 +45,12 @@ const app = express();
 
 app.set('view engine', 'ejs');
 app.set('views', 'views');
-
 app.use(express.urlencoded({ extended: true }));
 
 app.use(storeRouter);
 
 // "/host" is the common path for all hostRouters middleware
 app.use('/host', hostRouter);
-
 app.use(pageNotFound);
 
 app.listen(3000, () => {

@@ -1,0 +1,73 @@
+<%- include('../partials/head.ejs') %>
+<body class="bg-gray-50 font-sans antialiased text-gray-900">
+  <%- include('../partials/header.ejs') %>
+
+  <main class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+
+    <div class="mb-6">
+      <h1 class="text-3xl font-bold text-gray-900"><%= home.houseName %></h1>
+      <p class="text-gray-600 flex items-center gap-1 mt-1">
+        <span class="text-yellow-500">★</span> <%= home.rating %> •
+        <span class="underline font-medium ml-1"><%= home.location %></span>
+      </p>
+    </div>
+
+    <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+
+      <div class="lg:col-span-8">
+        <div class="rounded-xl overflow-hidden shadow-md bg-gray-200 mb-8">
+          <img
+            src="<%= home.pictureUrl %>"
+            alt="<%= home.houseName %>"
+            class="w-full h-80 object-cover hover:scale-105 transition-transform duration-500"
+          />
+        </div>
+
+        <div class="prose prose-indigo">
+          <h2 class="text-2xl font-bold border-b pb-4">Experience <%= home.houseName %></h2>
+          <p class="text-gray-600 mt-4 leading-relaxed">
+            Located in the beautiful area of <strong><%= home.location %></strong>, this property offers
+            everything you need for a comfortable stay. Rated <strong><%= home.rating %>/5</strong> by our community.
+          </p>
+
+          <div class="mt-8 grid grid-cols-2 gap-4">
+            <div class="flex items-center gap-2 p-3 bg-white rounded-lg border border-gray-100 shadow-sm">
+              <span>🌐</span> <span class="text-sm font-medium">High-speed WiFi</span>
+            </div>
+            <div class="flex items-center gap-2 p-3 bg-white rounded-lg border border-gray-100 shadow-sm">
+              <span>🛡️</span> <span class="text-sm font-medium">Self Check-in</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="lg:col-span-4 sticky top-8">
+        <div class="bg-white border border-gray-200 rounded-2xl p-6 shadow-xl">
+          <div class="flex justify-between items-baseline mb-4">
+            <span class="text-2xl font-black">$<%= home.pricePerNight %></span>
+            <span class="text-gray-500 text-sm">/ night</span>
+          </div>
+
+          <div class="space-y-3 mb-6">
+            <div class="w-full border rounded-lg p-2 text-xs font-bold bg-gray-50">
+              CHECK-IN: <span class="text-gray-500 font-normal">Add date</span>
+            </div>
+            <div class="w-full border rounded-lg p-2 text-xs font-bold bg-gray-50">
+              GUESTS: <span class="text-gray-500 font-normal">1 guest</span>
+            </div>
+          </div>
+
+          <button class="w-full bg-indigo-600 text-white py-3 rounded-xl font-bold hover:bg-indigo-700 transition-colors shadow-md">
+            Reserve Now
+          </button>
+
+          <!--<p class="text-center text-gray-400 text-[10px] mt-4 uppercase tracking-widest">No hidden fees</p>-->
+
+          <%- include('../partials/favourite.ejs') %>
+        </div>
+      </div>
+
+    </div>
+  </main>
+</body>
+</html>
