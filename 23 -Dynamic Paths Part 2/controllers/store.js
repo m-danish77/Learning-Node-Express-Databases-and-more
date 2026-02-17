@@ -60,6 +60,14 @@ const getFavouriteList = (req, res, next) => {
   });
 };
 
+const postRemoveFromFavourite = (req, res, next) => {
+  const homeId = req.params.homeId;
+  Favourite.deleteFavourite(homeId, () => {
+    console.log('Remove From Favourites');
+    res.redirect('/favourite-list');
+  });
+};
+
 const getBookings = (req, res, next) => {
   res.render('./store/bookings', {
     pageTitle: 'Bookings',
@@ -78,6 +86,7 @@ module.exports = {
   getHomeDetail,
   postAddToFavourite,
   getFavouriteList,
+  postRemoveFromFavourite,
   getBookings,
   getReserve,
 };

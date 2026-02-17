@@ -1,10 +1,6 @@
-function decimalToBinary(num) {
-  let str = '';
-  while (num > 0) {
-    str += num % 2;
-    num = Math.floor(num / 2);
-  }
-  return Number(str.split('').reverse().join(''));
+function createPhoneNumber(numbers) {
+  const numbersString = numbers.join('');
+  return `(${numbersString.slice(0, 3)}) ${numbersString.slice(3, 6)}-${numbersString.slice(6, 10)}`;
 }
 
-console.log(decimalToBinary(-12));
+console.log(createPhoneNumber([1, 2, 3, 4, 5, 6, 7, 8, 9, 0]));
