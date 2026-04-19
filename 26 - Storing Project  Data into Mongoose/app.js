@@ -1,7 +1,7 @@
 // Move backend to Mongoose
 
 // First build a connection to the database by writing code in db.js and then using it in app.js.
-//
+
 // change the Home and Favourite Model and add Mongoose schema validation for both then use them in respective controllers functions
 
 // Use the Mongoose References to link the Home and Favourite models together. Use the populate method to retrieve the related data when needed. This will allow you to easily access the related data without having to write complex queries.
