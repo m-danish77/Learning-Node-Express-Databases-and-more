@@ -1,0 +1,97 @@
+<%- include('../partials/head.ejs') %>
+<body class="bg-gray-50 font-sans antialiased text-gray-900">
+  <%- include('../partials/header.ejs') %>
+
+  <main class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+
+    <div class="mb-6">
+      <h1 class="text-3xl font-bold text-gray-900"><%= home.houseName %></h1>
+      <p class="text-gray-600 flex items-center gap-1 mt-1">
+        <span class="text-yellow-500">★</span> <%= home.rating %> •
+        <span class="underline font-medium ml-1"><%= home.location %></span>
+      </p>
+    </div>
+
+    <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+
+      <div class="lg:col-span-8">
+        <div class="rounded-xl overflow-hidden shadow-md bg-gray-200 mb-8">
+          <img
+            src="<%= home.picture %>"
+            alt="<%= home.houseName %>"
+            class="w-full h-80 object-cover hover:scale-105 transition-transform duration-500"
+          />
+        </div>
+
+        <div class="prose prose-indigo">
+          <h2 class="text-2xl font-bold border-b pb-4">Experience <%= home.houseName %></h2>
+          <p class="text-gray-600 mt-4 leading-relaxed">
+            Located in the beautiful area of <strong><%= home.location %></strong>, this property offers
+            everything you need for a comfortable stay. Rated <strong><%= home.rating %>/5</strong> by our community.
+          </p>
+
+          <div class="mt-8 pt-6 border-t border-gray-100">
+            <h3 class="text-lg font-semibold text-gray-900 mb-3">House Rules</h3>
+
+            <% if (home.rules) { %>
+              <a href="/rules/<%= home._id %>" target="<%= isLoggedIn ? '_blank' : '_self' %>"
+                 class="inline-flex items-center gap-3 px-5 py-3 bg-indigo-50 border border-indigo-100 text-indigo-700 rounded-xl hover:bg-indigo-100 hover:border-indigo-200 transition-all duration-200 group shadow-sm"
+              >
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-indigo-600 group-hover:scale-110 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 21h10a2 2 0 002-2V9.414a1 1 0 00-.293-.707l-5.414-5.414A1 1 0 0012.586 3H7a2 2 0 00-2 2v14a2 2 0 002 2z" />
+                </svg>
+
+                <div class="flex flex-col items-start">
+                  <span class="text-sm font-bold leading-tight">See House Rules</span>
+                  <span class="text-[10px] uppercase tracking-wider text-indigo-500 font-medium">PDF Document</span>
+                </div>
+
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 ml-2 opacity-50 group-hover:translate-y-1 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3" />
+                </svg>
+              </a>
+            <% } else { %>
+              <p class="text-sm text-gray-400 italic">No specific rules uploaded for this property.</p>
+            <% } %>
+          </div>
+          <div class="mt-8 grid grid-cols-2 gap-4">
+            <div class="flex items-center gap-2 p-3 bg-white rounded-lg border border-gray-100 shadow-sm">
+              <span>🌐</span> <span class="text-sm font-medium">High-speed WiFi</span>
+            </div>
+            <div class="flex items-center gap-2 p-3 bg-white rounded-lg border border-gray-100 shadow-sm">
+              <span>🛡️</span> <span class="text-sm font-medium">Self Check-in</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="lg:col-span-4 sticky top-8">
+        <div class="bg-white border border-gray-200 rounded-2xl p-6 shadow-xl">
+          <div class="flex justify-between items-baseline mb-4">
+            <span class="text-2xl font-black">$<%= home.pricePerNight %></span>
+            <span class="text-gray-500 text-sm">/ night</span>
+          </div>
+
+          <div class="space-y-3 mb-6">
+            <div class="w-full border rounded-lg p-2 text-xs font-bold bg-gray-50">
+              CHECK-IN: <span class="text-gray-500 font-normal">Add date</span>
+            </div>
+            <div class="w-full border rounded-lg p-2 text-xs font-bold bg-gray-50">
+              GUESTS: <span class="text-gray-500 font-normal">1 guest</span>
+            </div>
+          </div>
+
+          <button class="w-full bg-indigo-600 text-white py-3 rounded-xl font-bold hover:bg-indigo-700 transition-colors shadow-md">
+            Reserve Now
+          </button>
+
+          <!--<p class="text-center text-gray-400 text-[10px] mt-4 uppercase tracking-widest">No hidden fees</p>-->
+
+          <%- include('../partials/favourite.ejs') %>
+        </div>
+      </div>
+
+    </div>
+  </main>
+</body>
+</html>

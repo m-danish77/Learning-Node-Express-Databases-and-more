@@ -52,7 +52,7 @@ app.use(
     saveUninitialized: false, // session is only saved when a person login
     store,
     cookie: {
-      maxAge: 60 * 60 * 1000, // How long the cookie stays active (e.g., 1 hour time is in the milliseconds).
+      maxAge: 5 * 24 * 60 * 60 * 1000, // How long the cookie stays active (e.g., 5 Days time is in the milliseconds).
       httpOnly: true, // Prevents JavaScript from reading the cookie (Security!).
     },
   }),
